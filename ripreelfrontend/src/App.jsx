@@ -1,33 +1,34 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import ripreellogo from './assets/ripreellogo.svg'
 import './App.css'
+import { Box, Button, TextField } from '@mui/material'
+import Navbar from './Components/Navbar'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [format, setFormat] = useState('MP3')
+
+  const handleFormatToggle = () => {
+    setFormat((prevFormat) => (prevFormat == 'MP3' ? 'MP4' : 'MP3'))
+  }
 
   return (
     <>
+      <Navbar />
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <img src={ripreellogo} className="logo" alt="Vite logo" />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Box display="flex" alignItems="center" gap={2} padding="20px">
+        <TextField
+          sx={{ width: '600px' }}
+          label="Enter a YouTube video URL"
+          id="customWidth"
+        />
+        <Button variant="contained" color="primary" sx={{height: 56, backgroundColor: 'black'}} onClick={handleFormatToggle}>{format}</Button>
+        <Button variant="contained" color="primary" sx={{height: 56, backgroundColor: 'black'}}>Convert</Button>
+      </Box>
+      <h1>YouTube to MP3 Converter</h1>
+      <p>Free, ad-free, unlimited, and easy conversion from YouTube video URLs to MP3 or MP4 audio files.</p>
     </>
   )
 }
