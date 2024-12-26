@@ -20,7 +20,7 @@ function App() {
       </div>
       <Box display="flex" alignItems="center" gap={2} padding="20px">
         <TextField
-          sx={{ width: '600px' }}
+          sx={{ width: '400px' }}
           label="Enter a YouTube video URL"
           id="customWidth"
         />
